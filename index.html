@@ -122,12 +122,12 @@
         /* Responsive Auto-Fit Grid for any deck size (Sports 13, Alphabet 26, etc.) */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(4, minmax(100px, 1fr));
+            gap: 12px;
             perspective: 1000px;
             margin-bottom: 15px;
             width: 100%;
-            max-width: 950px;
+            max-width: 550px;
             justify-content: center;
         }
 
@@ -504,8 +504,8 @@
         function setupRound() {
             const currentDeck = decks.find(d => d.id === currentDeckId) || decks[0];
 
-            // Safely map display count to match the current deck's actual size
-            const displayCardsCount = Math.min(pokemonList.length, currentDeck.backs.length);
+            // Always display exactly 8 cards per round
+            const displayCardsCount = 8;
 
             let shuffledPokemon = [...pokemonList].sort(() => Math.random() - 0.5);
             let roundPokemon = shuffledPokemon.slice(0, displayCardsCount);
