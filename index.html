@@ -596,7 +596,7 @@
             const currentDeck = decks.find(d => d.id === currentDeckId) || decks[0];
 
             // Safely map display count to match the current deck's actual size
-            const displayCardsCount = Math.min(pokemonList.length, currentDeck.backs.length);
+            const displayCardsCount = Math.min(8, pokemonList.length, currentDeck.backs.length);
 
             let shuffledPokemon = [...pokemonList].sort(() => Math.random() - 0.5);
             let roundPokemon = shuffledPokemon.slice(0, displayCardsCount);
