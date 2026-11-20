@@ -222,6 +222,25 @@
         }
 
         /* Animations */
+        @keyframes targetHoverHop {
+    0%, 100% {
+        transform: translateY(0) scale(1.15);
+    }
+    50% {
+        transform: translateY(-6px) scale(1.18);
+    }
+}
+
+.target-display img,
+#target-container img {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.target-display img:hover,
+#target-container img:hover {
+    animation: targetHoverHop 0.7s infinite ease-in-out;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+}
         @keyframes cardEntrance {
             from { opacity: 0; transform: translateY(15px) scale(0.9); }
             to { opacity: 1; transform: translateY(0) scale(1); }
@@ -511,7 +530,7 @@
             targetPokemon = roundPokemon[Math.floor(Math.random() * roundPokemon.length)];
             
             const targetContainer = document.getElementById('target-container');
-            targetContainer.innerHTML = `🔍 Find the target: <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${targetPokemon.id}.png" alt="${targetPokemon.name}"> <strong>${targetPokemon.name}</strong>`;
+            targetContainer.innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${targetPokemon.id}.png" alt="${targetPokemon.name}"> <strong>${targetPokemon.name}</strong>`;
 
             winningIndex = roundPokemon.indexOf(targetPokemon);
 
