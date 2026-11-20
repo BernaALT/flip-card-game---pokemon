@@ -56,11 +56,15 @@
         .target-display {
             font-size: 1.1rem;
             color: #b45309;
+            background: #fef3c7;
+            padding: 6px 14px;
+            border-radius: 8px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 15px;
-
+            border: 1px solid #fde68a;
+            animation: pulseGlow 2s infinite ease-in-out;
         }
 
         .target-display img {
@@ -118,12 +122,12 @@
         /* Responsive Auto-Fit Grid for any deck size (Sports 13, Alphabet 26, etc.) */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(100px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
             perspective: 1000px;
             margin-bottom: 15px;
             width: 100%;
-            max-width: 550px;
+            max-width: 950px;
             justify-content: center;
         }
 
@@ -195,13 +199,11 @@
         }
 
         .card-front img {
-            width: auto;
-            height: auto;
-            max-height: 80%;
-            max-height: 70%;
+            width: 80%;
+            height: 80%;
+            max-height: 85px;
             object-fit: contain;
-            display: block;
-            margin: 0 auto;
+            margin-bottom: 4px;
             filter: drop-shadow(0 3px 3px rgba(0,0,0,0.1));
             transition: transform 0.3s;
         }
@@ -322,7 +324,7 @@
     </div>
 
     <div class="target-display" id="target-container">
-       <span id="target-name">Loading...</span>
+        🔍 Find the target: <span id="target-name">Loading...</span>
     </div>
 
     <div class="controls">
@@ -502,8 +504,8 @@
         function setupRound() {
             const currentDeck = decks.find(d => d.id === currentDeckId) || decks[0];
 
-            // Always display exactly 8 cards per round
-            const displayCardsCount = 8;
+            // Safely map display count to match the current deck's actual size
+            const displayCardsCount = Math.min(pokemonList.length, currentDeck.backs.length);
 
             let shuffledPokemon = [...pokemonList].sort(() => Math.random() - 0.5);
             let roundPokemon = shuffledPokemon.slice(0, displayCardsCount);
