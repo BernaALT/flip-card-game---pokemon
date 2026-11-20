@@ -68,7 +68,7 @@
             height: 100px;
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-            animation: floatTarget 2s ease-in-out infinite;
+            animation: floatTarget 4s ease-in-out infinite;
         }
 
         .controls {
@@ -222,25 +222,6 @@
         }
 
         /* Animations */
-        @keyframes targetHoverHop {
-    0%, 100% {
-        transform: translateY(0) scale(1.15);
-    }
-    50% {
-        transform: translateY(-6px) scale(1.18);
-    }
-}
-
-.target-display img,
-#target-container img {
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.target-display img:hover,
-#target-container img:hover {
-    animation: targetHoverHop 0.7s infinite ease-in-out;
-    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
-}
         @keyframes cardEntrance {
             from { opacity: 0; transform: translateY(15px) scale(0.9); }
             to { opacity: 1; transform: translateY(0) scale(1); }
