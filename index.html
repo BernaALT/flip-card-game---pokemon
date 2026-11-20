@@ -74,6 +74,38 @@
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
             animation: floatTarget 2s ease-in-out infinite;
         }
+        @keyframes floatTarget {
+           0%, 100% {
+        transform: translateY(0px);
+       }
+           50% {
+        transform: translateY(-6px);
+       }
+   }
+
+         @keyframes targetHoverBounce {
+            0%, 100% {
+        transform: translateY(0px) scale(1.15);
+       }
+            50% {
+        transform: translateY(-7px) scale(1.2);
+       }
+   }
+
+        .target-display img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+            animation: floatTarget 2s ease-in-out infinite;
+            transition: transform 0.25s ease, filter 0.25s ease;
+            cursor: pointer;
+    }
+
+        .target-display img:hover {
+            animation: targetHoverBounce 0.7s ease-in-out infinite;
+            filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.22));
+    }
 
         .controls {
             display: flex;
